@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useMemo } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import '../Pages/CSS/CheckoutSucesso.css';
 import { ShopContext } from '../Context/ShopContext';

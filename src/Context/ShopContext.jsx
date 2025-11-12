@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 
 export const ShopContext = createContext(null);
 
@@ -26,7 +26,7 @@ const ShopContextProvider = (props) => {
     };
   };
 
-  const carregarDados = async () => {
+  const carregarDados = useCallback(async () => {
     try {
       const produtos = await fetchJSON(`${API_URL}/products/allproducts`);
       setAll_Product(Array.isArray(produtos) ? produtos : []);
@@ -41,7 +41,7 @@ const ShopContextProvider = (props) => {
       console.warn('carregarDados falhou:', e.message);
       setCartItems({});
     }
-  };
+  }, []);
 
   useEffect(() => {
     carregarDados();
