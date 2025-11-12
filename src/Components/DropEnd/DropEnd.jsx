@@ -72,7 +72,7 @@ const DropEnd = () => {
     };
 
     buscarDropMaisProximoDoFim();
-  }, []);
+  }, [prevTime]);
 
   return (
     <div className="drop-end">
