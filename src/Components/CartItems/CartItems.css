@@ -585,7 +585,7 @@
   .cartitems-total,
   .cartitems-promocode {
     min-width: 100%;
-    padding: 28px 24px;
+    padding: 28px 1px;
   }
 
   .cartitems-qty-btn {

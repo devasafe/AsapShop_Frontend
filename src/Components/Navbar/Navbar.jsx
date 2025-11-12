@@ -151,6 +151,23 @@ const Navbar = () => {
       <div className="nav-login-cart">
         {localStorage.getItem('auth-token') ? (
           <>
+            {/* Ícone do perfil desktop */}
+            <Link to="/perfil" className="nav-profile-desktop" style={{ alignItems: 'center', gap: 8 }}>
+              <img 
+                src={userImage} 
+                alt="Perfil" 
+                className="nav-profile-img"
+                style={{ width: 36, height: 36, borderRadius: '50%' }}
+                onError={(e) => { e.target.src = 'https://i.pravatar.cc/40?u=default'; }}
+              />
+              <span>Perfil</span>
+            </Link>
+            {/* Ícone do carrinho desktop */}
+            <Link to="/cart" className="nav-cart-icon" style={{ alignItems: 'center', gap: 8 }}>
+              <img src={cart_icon} alt="Carrinho" className="nav-cart-img" style={{ width: 36, height: 36 }} />
+              <span>Carrinho</span>
+              <div className="nav-cart-count">{getTotalCartItems()}</div>
+            </Link>
             <button onClick={handleLogout}>Logout</button>
           </>
         ) : (
