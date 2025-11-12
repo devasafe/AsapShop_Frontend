@@ -1,0 +1,159 @@
+/* ============================================
+   FALHA - PREMIUM DARK DESIGN
+   ============================================ */
+
+.falha-page {
+  min-height: 100vh;
+  padding: 100px 20px 80px;
+  background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Luz ambiente */
+.falha-page::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(231, 76, 60, 0.12) 0%, transparent 70%);
+  animation: ambient-pulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ambient-pulse {
+  0%, 100% { opacity: 0.45; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.8; transform: translateX(-50%) scale(1.12); }
+}
+
+.falha-container {
+  width: 100%;
+  max-width: 560px;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+  backdrop-filter: blur(18px);
+  padding: 40px 32px;
+  border-radius: 18px;
+  border: 1px solid rgba(231, 76, 60, 0.25);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(231, 76, 60, 0.1),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+  text-align: center;
+  animation: fadeInUp 0.7s ease backwards;
+  color: #f1f1f1;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.falha-icon {
+  font-size: 72px;
+  margin-bottom: 16px;
+  text-shadow: 0 8px 30px rgba(231, 76, 60, 0.5);
+}
+
+.falha-container h1 {
+  margin-bottom: 12px;
+  font-size: 30px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff6b6b 0%, #e74c3c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.falha-container p {
+  color: #cfcfcf;
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.falha-container ul {
+  text-align: left;
+  margin: 18px auto 8px;
+  max-width: 360px;
+  color: #d4d4d4;
+  list-style: none;
+  padding: 0;
+}
+
+.falha-container li {
+  margin: 8px 0;
+  position: relative;
+  padding-left: 26px;
+  transition: transform 0.2s ease;
+}
+
+.falha-container li::before {
+  content: '✖';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #ff6b6b;
+  font-weight: 800;
+}
+
+.falha-container li:hover {
+  transform: translateX(4px);
+}
+
+.falha-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 26px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Botões */
+.btn-tentar-novamente,
+.btn-voltar-carrinho {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.btn-tentar-novamente {
+  background: linear-gradient(135deg, #4da3ff 0%, #1e90ff 100%);
+  color: #000;
+  box-shadow: 0 8px 24px rgba(30, 144, 255, 0.35);
+}
+
+.btn-tentar-novamente:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(30, 144, 255, 0.55);
+}
+
+.btn-voltar-carrinho {
+  background: linear-gradient(135deg, #bbbbbb 0%, #8f8f8f 100%);
+  color: #000;
+  box-shadow: 0 8px 24px rgba(180, 180, 180, 0.25);
+}
+
+.btn-voltar-carrinho:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(200, 200, 200, 0.45);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .falha-container { padding: 32px 20px; border-radius: 16px; }
+  .falha-icon { font-size: 60px; }
+  .falha-container h1 { font-size: 26px; }
+  .falha-actions { gap: 10px; }
+}

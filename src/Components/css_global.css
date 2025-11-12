@@ -1,0 +1,38 @@
+:root {
+  /* Premium Golds */
+  --gold-primary: #FFB800;
+  --gold-secondary: #FFA000;
+  --gold-accent: #FFED4E;
+  
+  /* Deep Blacks */
+  --black-pure: #000000;
+  --black-soft: #0D0D0D;
+  --black-card: #141414;
+  --black-elevated: #1C1C1C;
+  
+  /* Refined Grays */
+  --gray-100: #F5F5F5;
+  --gray-200: #E0E0E0;
+  --gray-300: #9E9E9E;
+  --gray-400: #616161;
+  --gray-500: #424242;
+  
+  /* Premium Whites */
+  --white-pure: #FFFFFF;
+  --white-soft: #FAFAFA;
+  
+  /* Accent Colors */
+  --red-vibrant: #FF3B30;
+  --green-success: #34C759;
+  --blue-info: #007AFF;
+  
+  /* Glass & Blur */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  
+  /* Shadows Premium */
+  --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-strong: 0 16px 64px rgba(0, 0, 0, 0.24);
+  --shadow-gold: 0 8px 32px rgba(255, 184, 0, 0.2);
+}

@@ -1,0 +1,444 @@
+.drop-atual-container {
+  padding: 70px 0 60px;
+  background: var(--black-pure);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient lighting effect */
+.drop-atual-container::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 184, 0, 0.03) 0%,
+    rgba(255, 184, 0, 0.01) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: ambient-pulse 10s ease-in-out infinite;
+}
+
+@keyframes ambient-pulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* Header Section */
+.drop-header {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  padding: 0 60px;
+  text-align: center;
+}
+
+.drop-atual-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 10px;
+  padding: 6px 14px;
+  background: rgba(255, 184, 0, 0.1);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 184, 0, 0.2);
+}
+
+.drop-atual-heading {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--white-pure);
+  margin: 0 0 12px;
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+
+.drop-atual-heading-accent {
+  background: linear-gradient(
+    135deg,
+    #FFB800 0%,
+    #FFED4E 25%,
+    #FFB800 50%,
+    #FFED4E 75%,
+    #FFB800 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.drop-atual-subtitle {
+  font-size: 15px;
+  color: var(--gray-300);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Carousel */
+.embla {
+  overflow: visible;
+  position: relative;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  gap: 28px;
+  padding: 20px 60px 50px;
+  cursor: grab;
+  user-select: none;
+}
+
+.embla__container:active {
+  cursor: grabbing;
+}
+
+.embla__slide {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+/* Premium Card */
+.drop-atual-card {
+  width: 300px;
+  background: var(--black-card);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+}
+
+.drop-atual-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 184, 0, 0.4) 50%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.drop-atual-card:hover::before {
+  opacity: 1;
+}
+
+.drop-atual-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 184, 0, 0.1),
+    0 0 40px rgba(255, 184, 0, 0.12);
+}
+
+/* Image Container */
+.drop-atual-img-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  overflow: hidden;
+}
+
+.drop-atual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.drop-atual-card:hover .drop-atual-img {
+  transform: scale(1.08);
+}
+
+/* Status Badge */
+.drop-status-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  padding: 7px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green-success);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 4px rgba(52, 199, 89, 0);
+  }
+}
+
+.status-text {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--white-pure);
+}
+
+/* Discount Badge */
+.drop-discount-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--red-vibrant);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+  z-index: 2;
+}
+
+/* Card Content */
+.drop-atual-content {
+  padding: 20px;
+}
+
+.drop-atual-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white-pure);
+  margin: 0 0 12px;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Price Section */
+.drop-price-container {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.drop-atual-new-price {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--white-pure);
+  letter-spacing: -1px;
+}
+
+.drop-atual-old-price {
+  font-size: 14px;
+  color: var(--gray-400);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+/* CTA Button */
+.drop-cta-button {
+  width: 100%;
+  padding: 13px;
+  background: var(--white-pure);
+  color: var(--black-pure);
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.drop-cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-accent));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.drop-cta-button:hover::before {
+  opacity: 1;
+}
+
+.drop-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+}
+
+.drop-cta-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsivo */
+@media (max-width: 1440px) {
+  .embla__container {
+    padding: 20px 40px 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .drop-header {
+    padding: 0 40px;
+  }
+
+  .drop-atual-heading {
+    font-size: 36px;
+  }
+  
+  .drop-atual-card {
+    width: 280px;
+  }
+  
+  .drop-atual-img-container {
+    height: 280px;
+  }
+
+  .embla__container {
+    padding: 20px 30px 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .drop-atual-container {
+    padding: 60px 0 50px;
+  }
+
+  .drop-header {
+    padding: 0 24px;
+  }
+  
+  .drop-atual-heading {
+    font-size: 32px;
+  }
+  
+  .drop-atual-card {
+    width: 260px;
+  }
+  
+  .drop-atual-img-container {
+    height: 260px;
+  }
+  
+  .embla__container {
+    gap: 20px;
+    padding: 20px 24px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .drop-header {
+    padding: 0 16px;
+  }
+
+  .drop-atual-heading {
+    font-size: 28px;
+  }
+  
+  .drop-atual-card {
+    width: 240px;
+  }
+  
+  .drop-atual-img-container {
+    height: 240px;
+  }
+  
+  .drop-atual-content {
+    padding: 16px;
+  }
+  
+  .drop-atual-name {
+    font-size: 16px;
+  }
+  
+  .drop-atual-new-price {
+    font-size: 22px;
+  }
+
+  .embla__container {
+    padding: 20px 16px 40px;
+  }
+}
+
+/* Smooth entrance animations */
+.drop-atual-card {
+  animation: card-entrance 0.8s cubic-bezier(0.23, 1, 0.32, 1) backwards;
+}
+
+@keyframes card-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.embla__slide:nth-child(1) .drop-atual-card { animation-delay: 0.1s; }
+.embla__slide:nth-child(2) .drop-atual-card { animation-delay: 0.2s; }
+.embla__slide:nth-child(3) .drop-atual-card { animation-delay: 0.3s; }
+.embla__slide:nth-child(4) .drop-atual-card { animation-delay: 0.4s; }

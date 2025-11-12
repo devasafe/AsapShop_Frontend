@@ -1,0 +1,54 @@
+:root {
+  /* Paleta */
+  --gold: #d4af37;
+  --gold-dark: #b8941f;
+  --black: #1a1a1a;
+  --graphite: #2d2d2d;
+  --slate: #333333;
+  --light-gray: #f5f5f5;
+  --neutral-gray: #e8e8e8;
+  --ice-gray: #fafafa;
+  --white: #ffffff;
+  --text-gray: #555555;
+  --muted-gray: #999999;
+
+  /* Alias */
+  --color-bg: var(--black);
+  --color-surface: var(--graphite);
+  --color-surface-alt: var(--slate);
+  --color-primary: var(--gold);
+  --color-primary-hover: var(--gold-dark);
+  --color-text: var(--white);
+  --color-text-muted: var(--muted-gray);
+  --color-border: #2a2a2a;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-1: 0 8px 24px rgba(0,0,0,0.30);
+
+  /* Breakpoints */
+  --bp-xs: 480px;
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}
+
+/* Helpers de layout responsivo */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+.hide-mobile { display: initial; }
+.show-mobile { display: none; }
+
+@media (max-width: 768px) {
+  .container { padding-inline: 12px; }
+  .hide-mobile { display: none !important; }
+  .show-mobile { display: initial !important; }
+}

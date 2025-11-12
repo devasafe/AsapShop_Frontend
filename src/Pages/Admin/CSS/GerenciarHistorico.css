@@ -1,0 +1,188 @@
+:root {
+  --bg: linear-gradient(180deg,#060606,#0d0d0f);
+  --bg-accent: radial-gradient(circle at 70% -10%, rgba(245,197,70,.08), transparent 70%);
+  --card: linear-gradient(145deg,#161618 0%, #0d0d0f 55%, #1f1f22 100%);
+  --text: #f2f2f2;
+  --muted: #b3b3b8;
+  --gold: #f5c546;
+  --danger: #ff4e3f;
+  --radius: 14px;
+  --shadow: 0 20px 50px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(245,197,70,.08);
+}
+
+.gerenciar-historico {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--bg-accent), var(--bg);
+  color: var(--text);
+}
+
+.gerenciar-historico h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--gold);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -.4px;
+  background: linear-gradient(120deg,var(--gold),#ffd86b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.total-usuarios {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.admin-loading,
+.admin-error,
+.sem-usuarios {
+  text-align: center;
+  padding: 50px 20px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.admin-error h3 {
+  color: var(--danger);
+  margin-bottom: 15px;
+}
+
+.admin-error button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: var(--gold);
+  color: #0e0e0e;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.user-historico-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--gold);
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.user-header h3 {
+  margin: 0;
+  color: var(--gold);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.user-header p {
+  margin: 5px 0 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+.btn-danger:disabled {
+  background: #444;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pedidos-list {
+  margin-top: 20px;
+}
+
+.pedidos-list h4 {
+  color: var(--gold);
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.pedido-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #17181b;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  gap: 15px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(245,197,70,0.08);
+}
+
+.pedido-info {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.pedido-info strong {
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.pedido-info span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.btn-delete {
+  background: var(--danger);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.btn-delete:hover {
+  background: #cc0000;
+  transform: scale(1.05);
+}
+
+.sem-historico {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 15px;
+  font-style: italic;
+  padding: 20px;
+  background: #17181b;
+  border-radius: 8px;
+}

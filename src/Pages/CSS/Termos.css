@@ -1,0 +1,328 @@
+/* ============================================
+   TERMOS DE USO - PREMIUM DARK DESIGN
+   ============================================ */
+
+.termos-page {
+  padding: 100px 20px 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de luz ambiente */
+.termos-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 184, 0, 0.08) 0%,
+    transparent 70%
+  );
+  animation: ambient-pulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ambient-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-50%) scale(1.15);
+  }
+}
+
+.termos-container {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  padding: 50px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 184, 0, 0.2);
+  box-shadow: 
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255, 184, 0, 0.1),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+  position: relative;
+  animation: fadeInUp 0.8s ease backwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.termos-container h1 {
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #FFB800 0%, #FFED4E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+  animation: fadeInDown 0.8s ease backwards 0.2s;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.termos-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #FFB800, transparent);
+  border-radius: 2px;
+}
+
+.termos-container > p {
+  text-align: center;
+  color: #b8b8b8;
+  font-size: 14px;
+  margin-bottom: 40px;
+  padding: 12px 20px;
+  background: rgba(255, 184, 0, 0.06);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 184, 0, 0.1);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.8s ease backwards 0.4s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.termos-container section {
+  margin-bottom: 40px;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.6) 0%, rgba(20, 20, 20, 0.7) 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 184, 0, 0.12);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeSlideUp 0.8s ease backwards;
+  animation-delay: calc(var(--section-index) * 0.1s);
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.termos-container section:nth-child(2) { --section-index: 1; }
+.termos-container section:nth-child(3) { --section-index: 2; }
+.termos-container section:nth-child(4) { --section-index: 3; }
+.termos-container section:nth-child(5) { --section-index: 4; }
+.termos-container section:nth-child(6) { --section-index: 5; }
+.termos-container section:nth-child(7) { --section-index: 6; }
+.termos-container section:nth-child(8) { --section-index: 7; }
+.termos-container section:nth-child(9) { --section-index: 8; }
+
+.termos-container section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 184, 0, 0.06),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.termos-container section:hover::before {
+  left: 100%;
+}
+
+.termos-container section:hover {
+  transform: translateX(6px);
+  border-color: rgba(255, 184, 0, 0.25);
+  box-shadow: 0 8px 24px rgba(255, 184, 0, 0.15);
+}
+
+.termos-container h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #FFB800;
+  margin: 0 0 18px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.termos-container h2::before {
+  content: '▸';
+  font-size: 20px;
+  color: #FFED4E;
+}
+
+.termos-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #FFB800, transparent);
+}
+
+.termos-container p {
+  line-height: 1.8;
+  color: #d4d4d4;
+  margin-bottom: 16px;
+  font-size: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.termos-container p strong {
+  color: #FFB800;
+  font-weight: 700;
+}
+
+.termos-container ul {
+  margin: 20px 0 20px 24px;
+  line-height: 1.9;
+  color: #d4d4d4;
+  list-style: none;
+  padding: 0;
+}
+
+.termos-container ul li {
+  margin-bottom: 12px;
+  padding-left: 28px;
+  position: relative;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.termos-container ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #FFB800;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.termos-container ul li:hover {
+  color: #f1f1f1;
+  transform: translateX(4px);
+}
+
+/* Scroll reveal animation */
+@media (prefers-reduced-motion: no-preference) {
+  .termos-container section {
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease forwards;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .termos-page {
+    padding: 80px 16px 60px;
+  }
+
+  .termos-container {
+    padding: 36px 28px;
+    border-radius: 16px;
+  }
+
+  .termos-container h1 {
+    font-size: 32px;
+  }
+
+  .termos-container h2 {
+    font-size: 20px;
+  }
+
+  .termos-container section {
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+
+  .termos-container p,
+  .termos-container ul li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .termos-page {
+    padding: 70px 12px 50px;
+  }
+
+  .termos-container {
+    padding: 28px 20px;
+  }
+
+  .termos-container h1 {
+    font-size: 28px;
+  }
+
+  .termos-container h2 {
+    font-size: 18px;
+  }
+
+  .termos-container section {
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+
+  .termos-container p,
+  .termos-container ul li {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .termos-container ul {
+    margin-left: 16px;
+  }
+}

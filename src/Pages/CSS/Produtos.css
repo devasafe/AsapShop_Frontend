@@ -1,0 +1,414 @@
+/* ============================================
+   PRODUTOS PAGE - PREMIUM DESIGN
+   ============================================ */
+
+/* Page Container */
+.produtos-page {
+  padding: 80px 0 60px;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+/* Ambient lighting effect */
+.produtos-page::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 184, 0, 0.03) 0%,
+    rgba(255, 184, 0, 0.01) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: ambient-pulse 10s ease-in-out infinite;
+}
+
+@keyframes ambient-pulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+
+.produtos-header {
+  max-width: 1400px;
+  margin: 0 auto 50px;
+  padding: 0 60px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.produtos-titulo {
+  font-size: 42px;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0 0 12px;
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+
+.produtos-titulo-accent {
+  margin-top: 200px;
+  background: linear-gradient(
+    135deg,
+    #FFB800 0%,
+    #FFED4E 25%,
+    #FFB800 50%,
+    #FFED4E 75%,
+    #FFB800 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.produtos-subtitulo {
+  font-size: 15px;
+  color: #9E9E9E;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   GRID CONTAINER
+   ============================================ */
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.produto-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ============================================
+   PREMIUM CARD
+   ============================================ */
+
+.produto-card {
+  width: 100%;
+  background: #1a1a1a;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+}
+
+.produto-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 184, 0, 0.4) 50%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.produto-card:hover::before {
+  opacity: 1;
+}
+
+.produto-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 184, 0, 0.1),
+    0 0 40px rgba(255, 184, 0, 0.12);
+}
+
+/* ============================================
+   IMAGE CONTAINER
+   ============================================ */
+
+.produto-img-wrapper {
+  position: relative;
+  width: 100%;
+  background: #1a1a1a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.produto-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.produto-card:hover .produto-img {
+  transform: scale(1.08);
+}
+
+/* ============================================
+   STATUS BADGE
+   ============================================ */
+
+.produto-status {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #FF3B30, #E63946);
+  color: #FFFFFF;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+  z-index: 2;
+}
+
+/* ============================================
+   CARD CONTENT
+   ============================================ */
+
+.produto-info {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.produto-info h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 12px;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 44px;
+}
+
+/* ============================================
+   PRICE SECTION
+   ============================================ */
+
+.produto-price-container {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.produto-new-price {
+  font-size: 24px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.produto-old-price {
+  font-size: 14px;
+  color: #6E6E6E;
+  text-decoration: line-through;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ============================================
+   SPACER
+   ============================================ */
+
+.produtos-page > div[style*="paddingTop"] {
+  margin: 60px 0;
+}
+
+/* ============================================
+   ENTRANCE ANIMATIONS
+   ============================================ */
+
+.produto-card {
+  animation: card-entrance 0.8s cubic-bezier(0.23, 1, 0.32, 1) backwards;
+}
+
+@keyframes card-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.produto-card:nth-child(1) { animation-delay: 0.05s; }
+.produto-card:nth-child(2) { animation-delay: 0.1s; }
+.produto-card:nth-child(3) { animation-delay: 0.15s; }
+.produto-card:nth-child(4) { animation-delay: 0.2s; }
+.produto-card:nth-child(5) { animation-delay: 0.25s; }
+.produto-card:nth-child(6) { animation-delay: 0.3s; }
+.produto-card:nth-child(7) { animation-delay: 0.35s; }
+.produto-card:nth-child(8) { animation-delay: 0.4s; }
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1440px) {
+  .produtos-grid {
+    padding: 0 40px;
+  }
+
+  .produtos-header {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .produtos-page {
+    padding: 70px 0 50px;
+  }
+
+  .produtos-header {
+    padding: 0 40px;
+    margin-bottom: 40px;
+  }
+
+  .produtos-titulo {
+    font-size: 36px;
+  }
+
+  .produtos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .produtos-page {
+    padding: 60px 0 40px;
+  }
+
+  .produtos-header {
+    padding: 0 24px;
+    margin-bottom: 36px;
+  }
+
+  .produtos-titulo {
+    font-size: 32px;
+  }
+
+  .produtos-subtitulo {
+    font-size: 14px;
+  }
+
+  .produtos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+    padding: 0 24px;
+  }
+
+  .produto-info h3 {
+    font-size: 16px;
+    min-height: 40px;
+  }
+
+  .produto-new-price {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .produtos-page {
+    padding: 50px 0 32px;
+  }
+
+  .produtos-header {
+    padding: 0 16px;
+    margin-bottom: 32px;
+  }
+
+  .produtos-titulo {
+    font-size: 28px;
+  }
+
+  .produtos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .produto-card {
+    border-radius: 20px;
+  }
+
+  .produto-info {
+    padding: 16px;
+  }
+
+  .produto-info h3 {
+    font-size: 15px;
+    min-height: 38px;
+  }
+
+  .produto-new-price {
+    font-size: 20px;
+  }
+
+  .produto-old-price {
+    font-size: 13px;
+  }
+
+  .produto-status {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}

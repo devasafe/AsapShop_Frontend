@@ -1,0 +1,175 @@
+/* ===========================
+   COUPON MANAGER – DARK PREMIUM
+   =========================== */
+
+:root {
+  --bg: linear-gradient(180deg,#060606,#0d0d0f);
+  --bg-accent: radial-gradient(circle at 70% -10%, rgba(245,197,70,.08), transparent 70%);
+  --card: linear-gradient(145deg,#161618 0%, #0d0d0f 55%, #1f1f22 100%);
+  --text: #f2f2f2;
+  --muted: #b3b3b8;
+  --line: rgba(245,197,70,0.18);
+  --line-soft: rgba(255,255,255,0.08);
+  --gold: #f5c546;
+  --gold-2: #ffd86b;
+  --gold-soft: rgba(245,197,70,.12);
+  --danger: #ff4e3f;
+  --radius: 14px;
+  --shadow: 0 20px 50px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(245,197,70,.08);
+}
+
+.admin-content {
+  flex: 1;
+  min-height: 100vh;
+  background: var(--bg-accent), var(--bg);
+  padding: 92px 40px 50px;
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.cupom-page {
+  width: 100%;
+}
+
+.cupom-container {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 34px 30px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.cupom-container h1 {
+  margin: 0 0 28px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -.3px;
+  text-align: center;
+  background: linear-gradient(120deg,var(--gold),var(--gold-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cupom-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.cupom-form input,
+.cupom-form select {
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line-soft);
+  background: #141517 !important;
+  color: var(--text) !important;
+  font-size: .95rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.cupom-form input:focus,
+.cupom-form select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(245,197,70,.18);
+  background: #17181b !important;
+}
+
+.cupom-form button {
+  padding: 14px;
+  margin-top: 8px;
+  background: linear-gradient(135deg,var(--gold),var(--gold-2));
+  color: #0e0e0e;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: .5px;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .25s;
+}
+
+.cupom-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px -14px rgba(245,197,70,.6);
+}
+
+.cupom-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cupom-card {
+  background: #17181b;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.cupom-card:hover {
+  border-color: var(--line);
+  box-shadow: 0 8px 20px -10px rgba(0,0,0,.5);
+}
+
+.cupom-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  background: linear-gradient(120deg,var(--gold),var(--gold-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cupom-card p {
+  font-size: .88rem;
+  color: var(--muted);
+  margin: 6px 0;
+}
+
+.cupom-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.cupom-actions button {
+  padding: 8px 16px;
+  font-size: .85rem;
+  font-weight: 800;
+  letter-spacing: .4px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.cupom-actions button:first-child {
+  background: linear-gradient(135deg,var(--gold),var(--gold-2));
+  color: #0e0e0e;
+}
+
+.cupom-actions button:last-child {
+  background: linear-gradient(135deg,var(--danger),#ff2d1c);
+  color: #fff;
+}
+
+.cupom-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -10px rgba(245,197,70,.5);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .admin-content { padding: 72px 20px 40px; }
+  .cupom-container { padding: 26px 20px; }
+  .cupom-card { padding: 16px; }
+}
