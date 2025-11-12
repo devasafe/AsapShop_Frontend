@@ -62,7 +62,7 @@ export default function CheckoutSucesso() {
           <Link to="/" className="btn-sucesso">
             🏠 Início
           </Link>
-          <Link to="/meus-pedidos" className="btn-sucesso btn-alt">
+          <Link to="/perfil" className="btn-sucesso btn-alt">
             📦 Meus Pedidos
           </Link>
         </div>
