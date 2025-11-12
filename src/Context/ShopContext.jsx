@@ -45,7 +45,7 @@ const ShopContextProvider = (props) => {
 
   useEffect(() => {
     carregarDados();
-  }, []);
+  }, [carregarDados]);
 
   const addToCart = async (itemId, size = null, color = null) => {
     const token = localStorage.getItem('auth-token');
@@ -120,7 +120,7 @@ const ShopContextProvider = (props) => {
 
     // Fallback: remove cada unidade por chamada
     if (!massOK) {
-      for (const [_, entry] of variations) {
+  for (const [, entry] of variations) {
         const { size, color, qty } = entry;
         for (let i = 0; i < (qty || 0); i++) {
           try {

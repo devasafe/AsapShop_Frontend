@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './CSS/LoginSignup.css';
 
 const LoginSignup = () => {
-  const navigate = useNavigate();
+  // ...existing code...
   const [state, setState] = useState("Login");
   const [formData, setFormData] = useState({
     username: "",

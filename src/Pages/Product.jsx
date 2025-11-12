@@ -3,8 +3,7 @@ import { ShopContext } from '../Context/ShopContext';
 import { useParams, Link } from 'react-router-dom';
 import Breadcrum from '../Components/Breadcrums/Breadcrum';
 import ProductDisplay from '../Components/ProductDisplay/ProductDisplay';
-import DescriptionBox from '../Components/DescriptionBox/DescriptionBox';
-import RelatedProducts from '../Components/RelatedProducts/RelatedProducts';
+// ...existing code...
 
 const Product = () => {
   const { all_product } = useContext(ShopContext);

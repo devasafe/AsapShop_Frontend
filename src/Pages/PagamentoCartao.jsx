@@ -247,7 +247,7 @@ export default function PagamentoCartao() {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, []);
+  }, [endereco, itens, valorTotal]);
 
   return (
     <div className="pagamento-cartao-page">

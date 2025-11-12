@@ -7,13 +7,8 @@ export default function CheckoutSucesso() {
   const { clearCart } = useContext(ShopContext);
   const [searchParams] = useSearchParams();
 
-  const { rawId, displayId } = useMemo(() => {
-    const raw = searchParams.get('payment_id') || searchParams.get('external_reference') || '';
-    return {
-      rawId: raw,
-      displayId: raw ? `#${raw}` : '—'
-    };
-  }, [searchParams]);
+  const raw = searchParams.get('payment_id') || searchParams.get('external_reference') || '';
+  const displayId = raw ? `#${raw}` : '1';
 
   useEffect(() => {
     clearCart();
