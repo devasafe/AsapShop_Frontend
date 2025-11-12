@@ -136,7 +136,13 @@ const AdminPedidos = () => {
             {pedidoSelecionado.itens?.map((item, i) => (
               <li key={i} className="item-bloco">
                 <img
-                  src={item.image || 'http://via.placeholder.com/60'}
+                  src={
+                    item.image && item.image.startsWith('/images/')
+                      ? `https://asapshop-backend.onrender.com${item.image}`
+                      : item.image && item.image.startsWith('http')
+                        ? item.image
+                        : 'https://via.placeholder.com/60'
+                  }
                   alt={item.name || 'Produto'}
                   className="item-imagem"
                 />
