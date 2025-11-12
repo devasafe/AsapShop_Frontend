@@ -6,6 +6,7 @@ const Breadcrum = ({ product }) => {
 
   return (
     <div className="breadcrum">
+      <div style={{ paddingTop: '92px' }}></div><div style={{ paddingTop: '92px' }}></div>
       Home / {product.category} / {product.name}
     </div>
   );
