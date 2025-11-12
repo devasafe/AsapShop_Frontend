@@ -1,3 +1,61 @@
+/* Melhor responsividade para o carrinho */
+@media (max-width: 600px) {
+  .cartitems-format-main,
+  .cartitems-format {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 6px;
+    font-size: 12px;
+    overflow-x: auto;
+    min-width: 0;
+  }
+
+  .carticon-product-icon {
+    height: 40px;
+    width: 40px;
+    margin-bottom: 8px;
+  }
+
+  .cartitems-quantity-controls {
+    gap: 6px;
+  }
+
+  .cartitems-qty-btn {
+    padding: 4px 10px;
+    font-size: 15px;
+  }
+
+  .cartitems-total,
+  .cartitems-promocode {
+    min-width: 100%;
+    padding: 16px 8px;
+    font-size: 14px;
+  }
+
+  .cartitems-down {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .cartitems {
+    padding: 10px 2px;
+    margin: 60px auto 20px;
+    min-width: 0;
+  }
+
+  .cartitems-promobox {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cartitems-promobox button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 0;
+  }
+}
 /* ============================================
    CART ITEMS - PREMIUM DARK DESIGN
    ============================================ */
