@@ -88,13 +88,40 @@ const Navbar = () => {
       </div>
 
       <img 
-        className="nav-dropdown" 
+        className="nav-dropdown nav-dropdown-bg" 
         onClick={dropdown_toggle} 
         src={nav_dropdown} 
         alt="Menu" 
       />
 
       <ul ref={menuRef} className="nav-menu">
+        {/* Carrinho só dentro do menu hamburguer/mobile */}
+        {localStorage.getItem('auth-token') && (
+          <li className="nav-cart-mobile">
+            <Link to="/cart" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <img src={cart_icon} alt="Carrinho" className="nav-cart-img" style={{ width: 32, height: 32 }} />
+              <span>Carrinho</span>
+              <div className="nav-cart-count">{getTotalCartItems()}</div>
+            </Link>
+          </li>
+        )}
+        {/* Perfil só dentro do menu hamburguer/mobile */}
+        {localStorage.getItem('auth-token') && (
+          <li className="nav-profile-mobile">
+            <Link to="/perfil" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <img 
+                src={userImage} 
+                alt="Perfil" 
+                className="nav-profile-img"
+                style={{ width: 32, height: 32 }}
+                onError={(e) => {
+                  e.target.src = 'https://i.pravatar.cc/40?u=default';
+                }}
+              />
+              <span>Perfil</span>
+            </Link>
+          </li>
+        )}
         <li onClick={() => setMenu('inicio')}>
           <Link to="/">Início</Link>
           {menu === 'inicio' && <hr />}
@@ -124,34 +151,12 @@ const Navbar = () => {
       <div className="nav-login-cart">
         {localStorage.getItem('auth-token') ? (
           <>
-            <Link to="/cart" className="nav-cart-icon">
-              <img src={cart_icon} alt="Carrinho" />
-              <div className="nav-cart-count">{getTotalCartItems()}</div>
-            </Link>
-
-            <Link to="/perfil" className="nav-profile-icon">
-              <img 
-                src={userImage} 
-                alt="Perfil" 
-                className="nav-profile-img"
-                onError={(e) => {
-                  console.error('❌ Erro ao carregar imagem:', userImage);
-                  e.target.src = 'https://i.pravatar.cc/40?u=default';
-                }}
-              />
-            </Link>
-
             <button onClick={handleLogout}>Logout</button>
           </>
         ) : (
           <>
             <Link to="/login">
               <button>Login</button>
-            </Link>
-
-            <Link to="/cart" className="nav-cart-icon">
-              <img src={cart_icon} alt="Carrinho" />
-              <div className="nav-cart-count">{getTotalCartItems()}</div>
             </Link>
           </>
         )}
