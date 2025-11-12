@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useRef } from 'react';
 import { ShopContext } from '../Context/ShopContext';
 
 const MP_PUBLIC_KEY = process.env.REACT_APP_MP_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
 
 export default function PixStatusScreen() {
   const { clearCart } = useContext(ShopContext);

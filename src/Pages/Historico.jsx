@@ -6,7 +6,7 @@ const Historico = () => {
   const [dropsPassados, setDropsPassados] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/products/allproducts')
+  fetch('https://asapshop-backend.onrender.com/products/allproducts')
       .then(res => res.json())
       .then(data => {
         const agora = new Date();

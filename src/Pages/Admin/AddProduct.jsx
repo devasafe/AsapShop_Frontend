@@ -45,7 +45,7 @@ const AddProduct = () => {
       formData.append('product_images', img);
     });
 
-    const uploadRes = await fetch('http://localhost:4000/upload/upload-multiple', {
+  const uploadRes = await fetch('https://asapshop-backend.onrender.com/upload/upload-multiple', {
       method: 'POST',
       body: formData
     });
@@ -63,7 +63,7 @@ const AddProduct = () => {
       colors: product.colors.split(',').map(c => c.trim())
     };
 
-    const res = await fetch('http://localhost:4000/products/addproduct', {
+  const res = await fetch('https://asapshop-backend.onrender.com/products/addproduct', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(productData)

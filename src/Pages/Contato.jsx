@@ -19,7 +19,7 @@ const Contato = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:4000/email/send-email', {
+  const res = await fetch('https://asapshop-backend.onrender.com/email/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
