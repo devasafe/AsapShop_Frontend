@@ -19,7 +19,7 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:4000/products/allproducts')
+  fetch('https://asapshop-backend.onrender.com/products/allproducts')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -35,7 +35,7 @@ const Dashboard = () => {
         }
       });
 
-    fetch('http://localhost:4000/coupons/allcoupons')
+  fetch('https://asapshop-backend.onrender.com/coupons/allcoupons')
       .then(res => res.json())
       .then(data => {
         // ✅ CORRIGIDO: verifica se data.success existe e usa data.coupons
@@ -72,7 +72,7 @@ const Dashboard = () => {
     const statusAtual = dropsAtivos[dropId];
     const novoStatus = !statusAtual;
 
-    const res = await fetch('http://localhost:4000/products/toggleDropAvailable', {
+  const res = await fetch('https://asapshop-backend.onrender.com/products/toggleDropAvailable', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ drop_id: dropId, available: novoStatus })
@@ -89,7 +89,7 @@ const Dashboard = () => {
   };
 
   const salvarDatasDrop = async () => {
-    const res = await fetch('http://localhost:4000/products/updatedropdates', {
+  const res = await fetch('https://asapshop-backend.onrender.com/products/updatedropdates', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -119,7 +119,7 @@ const Dashboard = () => {
   };
 
   const salvarEdicao = async () => {
-    const res = await fetch('http://localhost:4000/products/updateproduct', {
+  const res = await fetch('https://asapshop-backend.onrender.com/products/updateproduct', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

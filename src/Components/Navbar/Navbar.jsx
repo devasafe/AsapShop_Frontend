@@ -6,7 +6,7 @@ import nav_dropdown from '../Assets/nav_dropdown.png';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
 
 const Navbar = () => {
   const [menu, setMenu] = useState('inicio');

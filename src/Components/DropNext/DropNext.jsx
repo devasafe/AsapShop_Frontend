@@ -7,7 +7,7 @@ const DropNext = () => {
   useEffect(() => {
     const buscarProximoDrop = async () => {
       try {
-        const res = await fetch('http://localhost:4000/products/allproducts');
+  const res = await fetch('https://asapshop-backend.onrender.com/products/allproducts');
         const data = await res.json();
 
         if (Array.isArray(data)) {

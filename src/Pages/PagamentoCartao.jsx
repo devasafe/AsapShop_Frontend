@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './CSS/PagamentoCartao.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
 const PUBLIC_KEY = process.env.REACT_APP_MP_PUBLIC_KEY;
 
 function parseTotal(itens, totalLS) {

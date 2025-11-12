@@ -11,7 +11,7 @@ const CouponManager = () => {
 
   // Carrega cupons ao iniciar
   useEffect(() => {
-    fetch('http://localhost:4000/coupons/allcoupons')
+  fetch('https://asapshop-backend.onrender.com/coupons/allcoupons')
       .then(res => res.json())
       .then(data => {
         if (data.success && Array.isArray(data.coupons)) {
@@ -35,7 +35,7 @@ const CouponManager = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:4000/coupons/addcoupon', {
+  const res = await fetch('https://asapshop-backend.onrender.com/coupons/addcoupon', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(cupomData)
@@ -60,7 +60,7 @@ const CouponManager = () => {
     if (!window.confirm('Deseja remover este cupom?')) return;
 
     try {
-      const res = await fetch(`http://localhost:4000/coupons/removercupom/${id}`, {
+  const res = await fetch(`https://asapshop-backend.onrender.com/coupons/removercupom/${id}`, {
         method: 'DELETE'
       });
 
@@ -79,7 +79,7 @@ const CouponManager = () => {
   // Toggle ativo/inativo
   const toggleStatus = async (id, ativoAtual) => {
     try {
-      const res = await fetch(`http://localhost:4000/coupons/cupomstatus/${id}`, {
+  const res = await fetch(`https://asapshop-backend.onrender.com/coupons/cupomstatus/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ativo: !ativoAtual })

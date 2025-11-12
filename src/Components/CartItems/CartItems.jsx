@@ -67,7 +67,7 @@ const CartItems = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:4000/coupons/validarcupom', {
+  const res = await fetch('https://asapshop-backend.onrender.com/coupons/validarcupom', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ codigo: cupomDigitado.toUpperCase() })

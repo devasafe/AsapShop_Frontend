@@ -83,7 +83,7 @@ const LoginSignup = () => {
 
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:4000/users/signup', {
+  const res = await fetch(`${process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com'}/users/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password })
@@ -113,7 +113,7 @@ const LoginSignup = () => {
 
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:4000/users/login', {
+  const res = await fetch(`${process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com'}/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -180,7 +180,7 @@ const LoginSignup = () => {
     try {
       setLoading(true);
       
-      const res = await fetch('http://localhost:4000/users/confirm', {
+  const res = await fetch(`${process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com'}/users/confirm`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code: verificationCode })
@@ -197,7 +197,7 @@ const LoginSignup = () => {
         const formDataImg = new FormData();
         formDataImg.append('avatar', imageFile);
 
-        await fetch('http://localhost:4000/users/upload-avatar', {
+  await fetch(`${process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com'}/users/upload-avatar`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${data.token}`

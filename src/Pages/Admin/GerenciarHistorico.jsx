@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CSS/GerenciarHistorico.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
 
 const GerenciarHistorico = () => {
   const [usuarios, setUsuarios] = useState([]);
