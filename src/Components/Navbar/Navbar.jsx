@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect, useRef } from 'react';
 import './Navbar.css';
 import logo from '../Assets/logo.png';
 import cart_icon from '../Assets/cart_icon.png';
-import nav_dropdown from '../Assets/nav_dropdown.png';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
 
@@ -14,12 +13,6 @@ const Navbar = () => {
   const { getTotalCartItems } = useContext(ShopContext);
   const menuRef = useRef();
 
-  const dropdown_toggle = (e) => {
-    if (menuRef.current) {
-      menuRef.current.classList.toggle('nav-menu-visible');
-    }
-    e.target.classList.toggle('open');
-  };
 
   useEffect(() => {
     const token = localStorage.getItem('auth-token');
@@ -81,104 +74,93 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar">
-      <div className="nav-logo">
-        <img src={logo} alt="Logo" />
-        <p>AsapStore</p>
-      </div>
-
-      <img 
-        className="nav-dropdown nav-dropdown-bg" 
-        onClick={dropdown_toggle} 
-        src={nav_dropdown} 
-        alt="Menu" 
-      />
-
-      <ul ref={menuRef} className="nav-menu">
-        {/* Carrinho só dentro do menu hamburguer/mobile */}
-        {localStorage.getItem('auth-token') && (
-          <li className="nav-cart-mobile">
-            <Link to="/cart" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <img src={cart_icon} alt="Carrinho" className="nav-cart-img" style={{ width: 32, height: 32 }} />
-              <span>Carrinho</span>
-              <div className="nav-cart-count">{getTotalCartItems()}</div>
-            </Link>
+    <>
+      <div className="navbar">
+        <div className="nav-logo">
+          <img src={logo} alt="Logo" />
+          <p>AsapStore</p>
+        </div>
+        <ul className="nav-menu" ref={menuRef}>
+          <li onClick={() => setMenu('inicio')}>
+            <Link to="/">Início</Link>
+            {menu === 'inicio' && <hr />}
           </li>
-        )}
-        {/* Perfil só dentro do menu hamburguer/mobile */}
-        {localStorage.getItem('auth-token') && (
-          <li className="nav-profile-mobile">
-            <Link to="/perfil" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <img 
-                src={userImage} 
-                alt="Perfil" 
-                className="nav-profile-img"
-                style={{ width: 32, height: 32 }}
-                onError={(e) => {
-                  e.target.src = 'https://i.pravatar.cc/40?u=default';
-                }}
-              />
-              <span>Perfil</span>
-            </Link>
+          <li onClick={() => setMenu('produtos')}>
+            <Link to="/produtos">Produtos</Link>
+            {menu === 'produtos' && <hr />}
           </li>
-        )}
-        <li onClick={() => setMenu('inicio')}>
-          <Link to="/">Início</Link>
-          {menu === 'inicio' && <hr />}
-        </li>
-        <li onClick={() => setMenu('produtos')}>
-          <Link to="/produtos">Produtos</Link>
-          {menu === 'produtos' && <hr />}
-        </li>
-        <li onClick={() => setMenu('historico')}>
-          <Link to="/historico">Histórico</Link>
-          {menu === 'historico' && <hr />}
-        </li>
-        <li onClick={() => setMenu('sobre')}>
-          <Link to="/sobre">Sobre</Link>
-          {menu === 'sobre' && <hr />}
-        </li>
-        <li onClick={() => setMenu('contato')}>
-          <Link to="/contato">Contato</Link>
-          {menu === 'contato' && <hr />}
-        </li>
-        <li onClick={() => setMenu('FAQ')}>
-          <Link to="/FAQ">FAQ</Link>
-          {menu === 'FAQ' && <hr />}
-        </li>
-      </ul>
-
-      <div className="nav-login-cart">
-        {localStorage.getItem('auth-token') ? (
-          <>
-            {/* Ícone do perfil desktop */}
-            <Link to="/perfil" className="nav-profile-desktop" style={{ alignItems: 'center', gap: 8 }}>
-              <img 
-                src={userImage} 
-                alt="Perfil" 
-                className="nav-profile-img"
-                style={{ width: 36, height: 36, borderRadius: '50%' }}
-                onError={(e) => { e.target.src = 'https://i.pravatar.cc/40?u=default'; }}
-              />
-              <span>Perfil</span>
-            </Link>
-            {/* Ícone do carrinho desktop */}
-            <Link to="/cart" className="nav-cart-icon" style={{ alignItems: 'center', gap: 8 }}>
-              <img src={cart_icon} alt="Carrinho" className="nav-cart-img" style={{ width: 36, height: 36 }} />
-              <span>Carrinho</span>
-              <div className="nav-cart-count">{getTotalCartItems()}</div>
-            </Link>
-            <button onClick={handleLogout}>Logout</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">
-              <button>Login</button>
-            </Link>
-          </>
-        )}
+          <li onClick={() => setMenu('historico')}>
+            <Link to="/historico">Histórico</Link>
+            {menu === 'historico' && <hr />}
+          </li>
+          <li onClick={() => setMenu('sobre')}>
+            <Link to="/sobre">Sobre</Link>
+            {menu === 'sobre' && <hr />}
+          </li>
+          <li onClick={() => setMenu('contato')}>
+            <Link to="/contato">Contato</Link>
+            {menu === 'contato' && <hr />}
+          </li>
+          <li onClick={() => setMenu('FAQ')}>
+            <Link to="/FAQ">FAQ</Link>
+            {menu === 'FAQ' && <hr />}
+          </li>
+          {/* Perfil só no menu mobile */}
+          {localStorage.getItem('auth-token') && (
+            <li className="nav-profile-mobile">
+              <Link to="/perfil" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <img 
+                  src={userImage} 
+                  alt="Perfil" 
+                  className="nav-profile-img"
+                  style={{ width: 32, height: 32 }}
+                  onError={(e) => {
+                    e.target.src = 'https://i.pravatar.cc/40?u=default';
+                  }}
+                />
+                <span>Perfil</span>
+              </Link>
+            </li>
+          )}
+        </ul>
+        <div className="nav-login-cart">
+          {localStorage.getItem('auth-token') ? (
+            <>
+              {/* Ícone do perfil desktop */}
+              <Link to="/perfil" className="nav-profile-desktop" style={{ alignItems: 'center', gap: 8 }}>
+                <img 
+                  src={userImage} 
+                  alt="Perfil" 
+                  className="nav-profile-img"
+                  style={{ width: 36, height: 36, borderRadius: '50%' }}
+                  onError={(e) => { e.target.src = 'https://i.pravatar.cc/40?u=default'; }}
+                />
+                <span>Perfil</span>
+              </Link>
+              {/* Ícone do carrinho desktop */}
+              <Link to="/cart" className="nav-cart-icon" style={{ alignItems: 'center', gap: 8 }}>
+                <img src={cart_icon} alt="Carrinho" className="nav-cart-img" style={{ width: 36, height: 36 }} />
+                <span>Carrinho</span>
+                <div className="nav-cart-count">{getTotalCartItems()}</div>
+              </Link>
+              <button onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <button>Login</button>
+              </Link>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+      {/* Aviso de login abaixo da navbar */}
+      {!localStorage.getItem('auth-token') && (
+        <div className="nav-login-warning">
+          <span>Você não está logado. Faça login para acessar todos os recursos da loja.</span>
+        </div>
+      )}
+    </>
   );
 };
 
