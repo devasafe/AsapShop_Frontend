@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../config';
 import React, { useEffect, useState } from 'react';
 import './CSS/Dashboard.css';
 
@@ -19,7 +20,7 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
-  fetch('https://asapshop-backend.onrender.com/products/allproducts')
+  fetch(`${BASE_URL}/products/allproducts`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -35,7 +36,7 @@ const Dashboard = () => {
         }
       });
 
-  fetch('https://asapshop-backend.onrender.com/coupons/allcoupons')
+  fetch(`${BASE_URL}/coupons/allcoupons`)
       .then(res => res.json())
       .then(data => {
         // ✅ CORRIGIDO: verifica se data.success existe e usa data.coupons
@@ -72,7 +73,7 @@ const Dashboard = () => {
     const statusAtual = dropsAtivos[dropId];
     const novoStatus = !statusAtual;
 
-  const res = await fetch('https://asapshop-backend.onrender.com/products/toggleDropAvailable', {
+  const res = await fetch(`${BASE_URL}/products/toggleDropAvailable`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ drop_id: dropId, available: novoStatus })
@@ -89,7 +90,7 @@ const Dashboard = () => {
   };
 
   const salvarDatasDrop = async () => {
-  const res = await fetch('https://asapshop-backend.onrender.com/products/updatedropdates', {
+  const res = await fetch(`${BASE_URL}/products/updatedropdates`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -119,7 +120,7 @@ const Dashboard = () => {
   };
 
   const salvarEdicao = async () => {
-  const res = await fetch('https://asapshop-backend.onrender.com/products/updateproduct', {
+  const res = await fetch(`${BASE_URL}/products/updateproduct`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -143,7 +144,7 @@ const Dashboard = () => {
   };
 
   const salvarEstoqueDireto = async (produtoId, novoEstoque) => {
-  const res = await fetch('https://asapshop-backend.onrender.com/products/updateproduct', {
+  const res = await fetch(`${BASE_URL}/products/updateproduct`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: produtoId, stock: novoEstoque })
@@ -164,7 +165,7 @@ const Dashboard = () => {
     const confirmar = window.confirm("Tem certeza que deseja deletar?");
     if (!confirmar) return;
 
-  const res = await fetch('https://asapshop-backend.onrender.com/products/removeproduct', {
+  const res = await fetch(`${BASE_URL}/products/removeproduct`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id })
@@ -189,7 +190,7 @@ const Dashboard = () => {
     };
 
     try {
-  const res = await fetch('https://asapshop-backend.onrender.com/coupons/addcoupon', {
+  const res = await fetch(`${BASE_URL}/coupons/addcoupon`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(cupomData)
@@ -213,7 +214,7 @@ const Dashboard = () => {
     if (!window.confirm('Deseja remover este cupom?')) return;
 
     try {
-  const res = await fetch(`https://asapshop-backend.onrender.com/coupons/removercupom/${id}`, {
+  const res = await fetch(`${BASE_URL}/coupons/removercupom/${id}`, {
         method: 'DELETE'
       });
 

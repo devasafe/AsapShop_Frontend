@@ -1,6 +1,7 @@
+import { BASE_URL } from '../config';
 import React, { useEffect } from 'react';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
+const API_URL = process.env.REACT_APP_API_URL || `${BASE_URL}`;
 
 export default function CheckoutPendente() {
   useEffect(() => {

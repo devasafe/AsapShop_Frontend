@@ -1,3 +1,4 @@
+import { BASE_URL } from '../config';
 import React, { useState, useRef } from 'react';
 // ...existing code...
 import './CSS/LoginSignup.css';
@@ -83,7 +84,7 @@ const LoginSignup = () => {
 
     try {
       setLoading(true);
-  const res = await fetch(`${process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com'}/users/signup`, {
+  const res = await fetch(`${process.env.REACT_APP_API_URL || `${BASE_URL}`}/users/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password })
@@ -113,7 +114,7 @@ const LoginSignup = () => {
 
     try {
       setLoading(true);
-  const res = await fetch(`${process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com'}/users/login`, {
+  const res = await fetch(`${process.env.REACT_APP_API_URL || `${BASE_URL}`}/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -180,7 +181,7 @@ const LoginSignup = () => {
     try {
       setLoading(true);
       
-  const res = await fetch(`${process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com'}/users/confirm`, {
+  const res = await fetch(`${process.env.REACT_APP_API_URL || `${BASE_URL}`}/users/confirm`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code: verificationCode })
@@ -197,7 +198,7 @@ const LoginSignup = () => {
         const formDataImg = new FormData();
         formDataImg.append('avatar', imageFile);
 
-  await fetch(`${process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com'}/users/upload-avatar`, {
+  await fetch(`${process.env.REACT_APP_API_URL || `${BASE_URL}`}/users/upload-avatar`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${data.token}`

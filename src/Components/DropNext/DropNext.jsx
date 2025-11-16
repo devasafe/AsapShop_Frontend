@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../config';
 import React, { useEffect, useState } from 'react';
 import './DropNext.css'; // Certifique-se que esse CSS está importado
 
@@ -7,7 +8,7 @@ const DropNext = () => {
   useEffect(() => {
     const buscarProximoDrop = async () => {
       try {
-  const res = await fetch('https://asapshop-backend.onrender.com/products/allproducts');
+  const res = await fetch(`${BASE_URL}/products/allproducts`);
         const data = await res.json();
 
         if (Array.isArray(data)) {

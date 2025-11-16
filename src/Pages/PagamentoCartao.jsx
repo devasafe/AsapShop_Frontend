@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './CSS/PagamentoCartao.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
+import { BASE_URL } from '../config';
 const PUBLIC_KEY = process.env.REACT_APP_MP_PUBLIC_KEY;
 
 function parseTotal(itens, totalLS) {
@@ -148,7 +148,7 @@ export default function PagamentoCartao() {
                   console.log('💳 Payload envio:', { ...payload, token: payload.token ? 'OK' : 'MISSING' });
 
                   // 1. Criar pagamento
-                  const res = await fetch(`${API_URL}/pagamento/pagar-cartao-direto`, {
+                  const res = await fetch(`${BASE_URL}/pagamento/pagar-cartao-direto`, {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
@@ -174,7 +174,7 @@ export default function PagamentoCartao() {
                   // 2. Se aprovado, processar pedido (estoque + emails)
                   if (status === 'approved') {
                     try {
-                      const processRes = await fetch(`${API_URL}/pagamento/processar-pedido-imediato`, {
+                        const processRes = await fetch(`${BASE_URL}/pagamento/processar-pedido-imediato`, {
                         method: 'POST',
                         headers: {
                           'Content-Type': 'application/json',

@@ -1,9 +1,10 @@
+import { BASE_URL } from '../config';
 import React, { useState, useContext, useMemo, useEffect } from 'react';
 import { ShopContext } from '../Context/ShopContext';
 import { useNavigate } from 'react-router-dom';
 import './CSS/Checkout.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
+const API_URL = process.env.REACT_APP_API_URL || `${BASE_URL}`;
 
 const buildImageUrl = (raw) => {
   if (!raw || typeof raw !== 'string') return null;

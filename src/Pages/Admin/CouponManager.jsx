@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../config';
 import { useEffect, useState } from 'react';
 import './CSS/CouponManager.css';
 
@@ -11,7 +12,7 @@ const CouponManager = () => {
 
   // Carrega cupons ao iniciar
   useEffect(() => {
-  fetch('https://asapshop-backend.onrender.com/coupons/allcoupons')
+  fetch(`${BASE_URL}/coupons/allcoupons`)
       .then(res => res.json())
       .then(data => {
         if (data.success && Array.isArray(data.coupons)) {
@@ -35,7 +36,7 @@ const CouponManager = () => {
     };
 
     try {
-  const res = await fetch('https://asapshop-backend.onrender.com/coupons/addcoupon', {
+  const res = await fetch(`${BASE_URL}/coupons/addcoupon`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(cupomData)
@@ -60,7 +61,7 @@ const CouponManager = () => {
     if (!window.confirm('Deseja remover este cupom?')) return;
 
     try {
-  const res = await fetch(`https://asapshop-backend.onrender.com/coupons/removercupom/${id}`, {
+  const res = await fetch(`${BASE_URL}/coupons/removercupom/${id}`, {
         method: 'DELETE'
       });
 
@@ -79,7 +80,7 @@ const CouponManager = () => {
   // Toggle ativo/inativo
   const toggleStatus = async (id, ativoAtual) => {
     try {
-  const res = await fetch(`https://asapshop-backend.onrender.com/coupons/cupomstatus/${id}`, {
+  const res = await fetch(`${BASE_URL}/coupons/cupomstatus/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ativo: !ativoAtual })

@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../config';
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import './Navbar.css';
 import logo from '../Assets/logo.png';
@@ -5,10 +6,11 @@ import cart_icon from '../Assets/cart_icon.png';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
+const API_URL = process.env.REACT_APP_API_URL || `${BASE_URL}`;
 
 const Navbar = () => {
   const [menu, setMenu] = useState('inicio');
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [userImage, setUserImage] = useState('https://i.pravatar.cc/40?u=default');
   const { getTotalCartItems } = useContext(ShopContext);
   const menuRef = useRef();
@@ -78,9 +80,20 @@ const Navbar = () => {
       <div className="navbar">
         <div className="nav-logo">
           <img src={logo} alt="Logo" />
-          <p>AsapStore</p>
+          <span className="nav-logo-name">AsapStore</span>
         </div>
-        <ul className="nav-menu" ref={menuRef}>
+        {/* Botão hamburguer para mobile */}
+        <button
+          className="nav-hamburger"
+          onClick={() => setShowMobileMenu((prev) => !prev)}
+          aria-label="Abrir menu"
+        >
+          <span className="nav-hamburger-icon">&#9776;</span>
+        </button>
+        <ul
+          className={`nav-menu${showMobileMenu ? ' nav-menu-mobile-open' : ''}`}
+          ref={menuRef}
+        >
           <li onClick={() => setMenu('inicio')}>
             <Link to="/">Início</Link>
             {menu === 'inicio' && <hr />}
@@ -105,22 +118,21 @@ const Navbar = () => {
             <Link to="/FAQ">FAQ</Link>
             {menu === 'FAQ' && <hr />}
           </li>
-          {/* Perfil só no menu mobile */}
+          {/* Perfil e carrinho só no menu lateral mobile */}
           {localStorage.getItem('auth-token') && (
-            <li className="nav-profile-mobile">
-              <Link to="/perfil" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <img 
-                  src={userImage} 
-                  alt="Perfil" 
-                  className="nav-profile-img"
-                  style={{ width: 32, height: 32 }}
-                  onError={(e) => {
-                    e.target.src = 'https://i.pravatar.cc/40?u=default';
-                  }}
-                />
-                <span>Perfil</span>
-              </Link>
-            </li>
+            <>
+              <li className="nav-profile-mobile">
+                <Link to="/perfil">
+                  <span>Perfil</span>
+                </Link>
+              </li>
+              <li className="nav-cart-mobile">
+                <Link to="/cart">
+                  <span>Carrinho</span>
+                  <div className="nav-cart-count">{getTotalCartItems()}</div>
+                </Link>
+              </li>
+            </>
           )}
         </ul>
         <div className="nav-login-cart">
@@ -153,7 +165,7 @@ const Navbar = () => {
             </>
           )}
         </div>
-      </div>
+  </div>
       {/* Aviso de login abaixo da navbar */}
       {!localStorage.getItem('auth-token') && (
         <div className="nav-login-warning">

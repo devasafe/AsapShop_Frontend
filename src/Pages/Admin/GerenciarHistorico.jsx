@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './CSS/GerenciarHistorico.css';
-
-const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
+import { BASE_URL } from '../../config';
 
 const GerenciarHistorico = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -12,70 +11,54 @@ const GerenciarHistorico = () => {
     fetchUsuarios();
   }, []);
 
+  const getAuthToken = () => localStorage.getItem('auth-token');
+
   const fetchUsuarios = async () => {
     try {
-      console.log('🔍 Buscando usuários...');
-      const token = localStorage.getItem('auth-token');
-      
+      const token = getAuthToken();
       if (!token) {
-        console.error('❌ Token não encontrado');
         setError('Token não encontrado');
         setLoading(false);
         return;
       }
 
-      console.log('📡 Fazendo requisição para:', `${API_URL}/users/getall`);
-      
-      const res = await fetch(`${API_URL}/users/getall`, {
+      const res = await fetch(`${BASE_URL}/users/getall`, {
         method: 'GET',
-        headers: { 
+        headers: {
           'auth-token': token,
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
-
-      console.log('📊 Status da resposta:', res.status);
 
       if (!res.ok) {
         const errorText = await res.text();
-        console.error('❌ Erro na resposta:', errorText);
         throw new Error(`Erro ${res.status}: ${errorText}`);
       }
 
       const data = await res.json();
-      console.log('✅ Dados recebidos:', data);
-      console.log('👥 Usuários:', data.users?.length || 0);
-
-      if (data.success && Array.isArray(data.users)) {
-        setUsuarios(data.users);
-        console.log('✅ Usuários salvos no estado');
-      } else {
-        console.warn('⚠️ Resposta sem usuários válidos');
-        setUsuarios([]);
-      }
-
+      const users = Array.isArray(data.users) ? data.users : [];
+      setUsuarios(users);
       setLoading(false);
     } catch (err) {
-      console.error('❌ Erro ao buscar usuários:', err);
       setError(err.message);
       setLoading(false);
     }
   };
 
   const handleClearHistorico = async (userId, userName) => {
-    if (!window.confirm(`Tem certeza que deseja apagar TODO o histórico de ${userName}?`)) {
-      return;
-    }
+    if (!window.confirm(`Tem certeza que deseja apagar TODO o histórico de ${userName}?`)) return;
 
     try {
-      const token = localStorage.getItem('auth-token');
-      const res = await fetch(`${API_URL}/users/admin/clear-historico/${userId}`, {
+      const token = getAuthToken();
+      const res = await fetch(`${BASE_URL}/users/admin/clear-historico/${userId}`, {
         method: 'DELETE',
-        headers: { 'auth-token': token }
+        headers: {
+          'auth-token': token,
+          'Content-Type': 'application/json',
+        },
       });
 
       const data = await res.json();
-
       if (data.success) {
         alert('Histórico apagado com sucesso!');
         fetchUsuarios();
@@ -83,25 +66,24 @@ const GerenciarHistorico = () => {
         alert(data.error || 'Erro ao apagar histórico');
       }
     } catch (err) {
-      console.error('Erro:', err);
       alert('Erro ao apagar histórico');
     }
   };
 
   const handleDeletePedido = async (userId, pedidoId, userName, pedidoNum) => {
-    if (!window.confirm(`Apagar pedido #${pedidoNum} de ${userName}?`)) {
-      return;
-    }
+    if (!window.confirm(`Apagar pedido #${pedidoNum} de ${userName}?`)) return;
 
     try {
-      const token = localStorage.getItem('auth-token');
-      const res = await fetch(`${API_URL}/users/admin/delete-pedido/${userId}/${pedidoId}`, {
+      const token = getAuthToken();
+      const res = await fetch(`${BASE_URL}/users/admin/delete-pedido/${userId}/${pedidoId}`, {
         method: 'DELETE',
-        headers: { 'auth-token': token }
+        headers: {
+          'auth-token': token,
+          'Content-Type': 'application/json',
+        },
       });
 
       const data = await res.json();
-
       if (data.success) {
         alert('Pedido removido com sucesso!');
         fetchUsuarios();
@@ -109,7 +91,6 @@ const GerenciarHistorico = () => {
         alert(data.error || 'Erro ao remover pedido');
       }
     } catch (err) {
-      console.error('Erro:', err);
       alert('Erro ao remover pedido');
     }
   };
@@ -167,10 +148,19 @@ const GerenciarHistorico = () => {
                       <strong>Pedido #{index + 1}</strong>
                       <span>Total: R$ {pedido.total?.toFixed(2) || '0.00'}</span>
                       <span>Status: {pedido.status || 'N/A'}</span>
-                      <span>Data: {pedido.data ? new Date(pedido.data).toLocaleDateString('pt-BR') : 'N/A'}</span>
+                      <span>
+                        Data:{' '}
+                        {pedido.data
+                          ? new Intl.DateTimeFormat('pt-BR', {
+                              dateStyle: 'medium',
+                            }).format(new Date(pedido.data))
+                          : 'N/A'}
+                      </span>
                     </div>
                     <button
-                      onClick={() => handleDeletePedido(user._id, pedido._id, user.name, index + 1)}
+                      onClick={() =>
+                        handleDeletePedido(user._id, pedido._id, user.name, index + 1)
+                      }
                       className="btn-delete"
                     >
                       ❌ Remover
@@ -179,7 +169,7 @@ const GerenciarHistorico = () => {
                 ))}
               </div>
             ) : (
-              <p className="sem-historico">📦 Sem histórico de compras</p>
+              <p>Sem histórico de pedidos.</p>
             )}
           </div>
         ))

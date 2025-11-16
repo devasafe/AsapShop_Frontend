@@ -1,8 +1,9 @@
+import { BASE_URL } from '../config';
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 
 export const ShopContext = createContext(null);
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
+const API_URL = process.env.REACT_APP_API_URL || `${BASE_URL}`;
 const getCartKey = (id, size, color) => `${id}_${size ?? 'Único'}_${color ?? 'Padrão'}`;
 
 const fetchJSON = async (url, options) => {

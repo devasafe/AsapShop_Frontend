@@ -8,7 +8,7 @@ const NewCollections = () => {
 
 
   useEffect(()=>{
-  fetch('https://asapshop-backend.onrender.com/newcollections')
+  fetch(`${BASE_URL}/newcollections`)
     .then((response)=>response.json())
     .then((data)=>setNew_collection(data));
   },[])

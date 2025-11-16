@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../config';
 import React, { useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
@@ -9,7 +10,7 @@ const DropAtual = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-  fetch('https://asapshop-backend.onrender.com/products/allproducts')
+  fetch(`${BASE_URL}/products/allproducts`)
       .then(res => res.json())
       .then(data => {
         const agora = new Date();

@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../config';
 import React, { useState, useEffect } from 'react';
 import './CSS/AdminPedidos.css';
 
@@ -138,7 +139,7 @@ const AdminPedidos = () => {
                 <img
                   src={
                     item.image && item.image.startsWith('/images/')
-                      ? `https://asapshop-backend.onrender.com${item.image}`
+                      ? `${BASE_URL}${item.image}`
                       : item.image && item.image.startsWith('http')
                         ? item.image
                         : 'https://via.placeholder.com/60'

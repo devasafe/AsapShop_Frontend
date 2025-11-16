@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../config';
 import React, { useEffect, useState } from 'react';
 import './DropEnd.css';
 
@@ -9,7 +10,7 @@ const DropEnd = () => {
   useEffect(() => {
     const buscarDropMaisProximoDoFim = async () => {
       try {
-  const res = await fetch('https://asapshop-backend.onrender.com/products/allproducts');
+  const res = await fetch(`${BASE_URL}/products/allproducts`);
         const data = await res.json();
 
         if (Array.isArray(data)) {

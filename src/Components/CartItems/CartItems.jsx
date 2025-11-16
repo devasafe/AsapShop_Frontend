@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../config';
 import React, { useContext, useState, useEffect } from 'react';
 import './CartItems.css';
 import { ShopContext } from '../../Context/ShopContext';
@@ -67,7 +68,7 @@ const CartItems = () => {
     }
 
     try {
-  const res = await fetch('https://asapshop-backend.onrender.com/coupons/validarcupom', {
+  const res = await fetch(`${BASE_URL}/coupons/validarcupom`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ codigo: cupomDigitado.toUpperCase() })

@@ -1,8 +1,7 @@
 import React, { useEffect, useContext, useRef } from 'react';
 import { ShopContext } from '../Context/ShopContext';
-
+import { BASE_URL } from '../config';
 const MP_PUBLIC_KEY = process.env.REACT_APP_MP_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
-const API_URL = process.env.REACT_APP_API_URL || 'https://asapshop-backend.onrender.com';
 
 export default function PixStatusScreen() {
   const { clearCart } = useContext(ShopContext);
@@ -34,7 +33,7 @@ export default function PixStatusScreen() {
       try {
         abortRef.current = new AbortController();
         const res = await fetch(
-          `${API_URL}/pagamento/status-payment/${paymentId}?silent=1`,
+          `${BASE_URL}/pagamento/status-payment/${paymentId}?silent=1`,
           { signal: abortRef.current.signal }
         );
         const data = await res.json();
