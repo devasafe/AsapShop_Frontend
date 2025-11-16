@@ -7,10 +7,11 @@ const DropEnd = () => {
   const [encerrado, setEncerrado] = useState(false);
   const [prevTime, setPrevTime] = useState(null);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const buscarDropMaisProximoDoFim = async () => {
       try {
-  const res = await fetch(`${BASE_URL}/products/allproducts`);
+        const res = await fetch(`${BASE_URL}/products/allproducts`);
         const data = await res.json();
 
         if (Array.isArray(data)) {
@@ -73,7 +74,7 @@ const DropEnd = () => {
     };
 
     buscarDropMaisProximoDoFim();
-  }, [prevTime]);
+  }, []); // <--- array de dependências vazio intencionalmente
 
   return (
     <div className="drop-end">
