@@ -2,7 +2,7 @@ import { BASE_URL } from '../../config';
 import React, { useState, useEffect } from 'react';
 import './CSS/AdminPedidos.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+const API_URL = process.env.REACT_APP_API_URL || `${BASE_URL}`;
 
 const AdminPedidos = () => {
   const [pedidos, setPedidos] = useState([]);

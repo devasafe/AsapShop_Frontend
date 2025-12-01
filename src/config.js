@@ -1,4 +1,4 @@
 // src/config.js
 
-export const BASE_URL = 'https://asapshop-backend.onrender.com';
-//export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://api.asapstore.shop';
+//export const BASE_URL = 'http://localhost:4000';
