@@ -73,7 +73,7 @@ const Contato = () => {
 
         <div className="contato-info">
           <h2>📞 Outras formas de contato</h2>
-          <p><strong>Email:</strong> contatoasapdev@gmail.com </p>
+          <p><strong>Email:</strong> contato@asapstore.shop </p>
           <p><strong>WhatsApp:</strong> (22) 99201-0218 </p>
           <p><strong>Atendimento:</strong> 24h </p>
         </div>
